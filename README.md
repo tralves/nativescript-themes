@@ -4,11 +4,14 @@ A NativeScript plugin to deal with dynamically loading UI Themes
 
 ## Developed by
 
+This plugin is mostly work of [Nathanael Anderson](https://github.com/nathanaela).
+In fact, this is a temp package while the PR isn't merged. I just added the support for loading from scss.
+
 [![MasterTech](https://plugins.nativescript.rocks/i/mtns.png)](https://plugins.nativescript.rocks/mastertech-nstudio)
 
-[![npm](https://img.shields.io/npm/v/nativescript-themes.svg)](https://www.npmjs.com/package/nativescript-themes)
-[![npm](https://img.shields.io/npm/l/nativescript-themes.svg)](https://www.npmjs.com/package/nativescript-themes)
-[![npm](https://img.shields.io/npm/dt/nativescript-themes.svg?label=npm%20d%2fls)](https://www.npmjs.com/package/nativescript-themes)
+[![npm](https://img.shields.io/npm/v/nativescript-themes.svg)](https://www.npmjs.com/package/nativescript-load-themes)
+[![npm](https://img.shields.io/npm/l/nativescript-themes.svg)](https://www.npmjs.com/package/nativescript-load-themes)
+[![npm](https://img.shields.io/npm/dt/nativescript-themes.svg?label=npm%20d%2fls)](https://www.npmjs.com/package/nativescript-load-themes)
 
 ## Installation
 
@@ -20,7 +23,7 @@ tns plugin add nativescript-themes
 
 ## Usage
 
-To use the module `require()` it:
+To use the module you just `require()` it:
 
 ```js
 var themes = require('nativescript-themes');
@@ -28,7 +31,7 @@ var themes = require('nativescript-themes');
 
 ## Setup in App
 
-Modify the entry point of your application, usually app.js
+Modify your startup app.js
 
 ```js
 var themes = require('nativescript-themes');
@@ -37,9 +40,17 @@ themes.applyTheme(themes.getAppliedTheme('red-theme.css'));
 
 This will automatically apply the "red-theme.css" theme if no other theme has ever been chosen as the default theme.
 
+You can also load a theme bundled by webpack using `applyThemeCss`:
+
+```js
+var themes = require('nativescript-themes');
+var cssText = require('~/assets/themes/dark.scss');
+themes.applyThemeCss(cssText, 'dark.scss');
+```
+
 ## You ask, how exactly does this help?
 
-This allows you to dynamically theme an application just by calling the theme system. Your app.css file is applied first, then the theme file and finally your page.css
+This allows you to dynamically theme an application just by calling the theme system. Your master app.css file is applied first, then the theme file and finally your page.css
 
 red-theme.css
 
@@ -88,6 +99,15 @@ if (currentTheme === 'red-theme.css') {
 }
 ```
 
+### themes.applyThemeCss('textCss', 'filename');
+
+This function receives a string containing CSS and applies it. The `filename` is only for reference (no file will be actually loaded).
+
+```js
+var themes = require('nativescript-themes');
+themes.applyThemeCss('page {background-color: black;}', 'default-theme.css');
+```
+
 ### Important
 
 Be careful declaring your app styles in the main `app.css` file. Those styles take precedent over the themes. So if you plan to use a theming approach in your application, it's best to keep the `app.css` to a minimum of styles that are shared possibly between your themes.
@@ -96,7 +116,7 @@ Be careful declaring your app styles in the main `app.css` file. Those styles ta
 
 Need some extra help getting started? Check out these tutorials for dealing with NativeScript UI themes in an iOS and Android application.
 
-- [Changing the UI Theme in a NativeScript Angular Application](https://www.thepolyglotdeveloper.com/2016/11/changing-a-nativescript-css-skin-at-runtime/)
+-   [Changing the UI Theme in a NativeScript Angular Application](https://www.thepolyglotdeveloper.com/2016/11/changing-a-nativescript-css-skin-at-runtime/)
 
 ## License
 
