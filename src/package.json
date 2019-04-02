@@ -1,5 +1,5 @@
 {
-	"name": "nativescript-themes",
+	"name": "nativescript-load-themes",
 	"version": "2.0.0",
 	"description": "A NativeScript plugin to load and deal with Themes in the Declarative UI.",
 	"main": "themes.js",
@@ -17,7 +17,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/tralves/nativescript-themes.git"
+		"url": "https://github.com/tralves/nativescript-themes.git#nativescript-load-themes"
 	},
 	"keywords": [
 		"NativeScript",
@@ -51,7 +51,7 @@
 	"bugs": {
 		"url": "https://github.com/tralves/nativescript-themes/issues"
 	},
-	"homepage": "https://github.com/tralves/nativescript-themes",
+	"homepage": "https://github.com/tralves/nativescript-themes/tree/nativescript-load-themes",
 	"readmeFilename": "README.md",
 	"devDependencies": {
 		"prettier": "~1.16.4",
