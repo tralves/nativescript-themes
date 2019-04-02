@@ -1,4 +1,4 @@
-# NativeScript-Themes
+# NativeScript-Load-Themes
 
 A NativeScript plugin to deal with dynamically loading UI Themes
 
@@ -9,9 +9,9 @@ In fact, this is a temp package while the PR isn't merged. I just added the supp
 
 [![MasterTech](https://plugins.nativescript.rocks/i/mtns.png)](https://plugins.nativescript.rocks/mastertech-nstudio)
 
-[![npm](https://img.shields.io/npm/v/nativescript-themes.svg)](https://www.npmjs.com/package/nativescript-load-themes)
-[![npm](https://img.shields.io/npm/l/nativescript-themes.svg)](https://www.npmjs.com/package/nativescript-load-themes)
-[![npm](https://img.shields.io/npm/dt/nativescript-themes.svg?label=npm%20d%2fls)](https://www.npmjs.com/package/nativescript-load-themes)
+[![npm](https://img.shields.io/npm/v/nativescript-load-themes.svg)](https://www.npmjs.com/package/nativescript-load-themes)
+[![npm](https://img.shields.io/npm/l/nativescript-load-themes.svg)](https://www.npmjs.com/package/nativescript-load-themes)
+[![npm](https://img.shields.io/npm/dt/nativescript-load-themes.svg?label=npm%20d%2fls)](https://www.npmjs.com/package/nativescript-load-themes)
 
 ## Installation
 
@@ -26,7 +26,7 @@ tns plugin add nativescript-themes
 To use the module you just `require()` it:
 
 ```js
-var themes = require('nativescript-themes');
+var themes = require('nativescript-load-themes');
 ```
 
 ## Setup in App
@@ -34,7 +34,7 @@ var themes = require('nativescript-themes');
 Modify your startup app.js
 
 ```js
-var themes = require('nativescript-themes');
+var themes = require('nativescript-load-themes');
 themes.applyTheme(themes.getAppliedTheme('red-theme.css'));
 ```
 
@@ -43,7 +43,7 @@ This will automatically apply the "red-theme.css" theme if no other theme has ev
 You can also load a theme bundled by webpack using `applyThemeCss`:
 
 ```js
-var themes = require('nativescript-themes');
+var themes = require('nativescript-load-themes');
 var cssText = require('~/assets/themes/dark.scss');
 themes.applyThemeCss(cssText, 'dark.scss');
 ```
@@ -81,7 +81,7 @@ This allows you to apply a specific theme file globally so all pages get it.
 **options.noSave** = _true_, this will cause it not to save this info for the getAppliedTheme to retrieve, this would typically used if you needed temporarily apply a theme.
 
 ```js
-var themes = require('nativescript-themes');
+var themes = require('nativescript-load-themes');
 themes.applyTheme('red-theme.css');
 ```
 
@@ -90,7 +90,7 @@ themes.applyTheme('red-theme.css');
 This returns the last theme applied; if no theme has been applied it will use the default_theme.
 
 ```js
-var themes = require('nativescript-themes');
+var themes = require('nativescript-load-themes');
 var currentTheme = themes.getAppliedTheme('red-theme.css');
 if (currentTheme === 'red-theme.css') {
 	console.log('We are using the default red-theme!');
@@ -104,7 +104,7 @@ if (currentTheme === 'red-theme.css') {
 This function receives a string containing CSS and applies it. The `filename` is only for reference (no file will be actually loaded).
 
 ```js
-var themes = require('nativescript-themes');
+var themes = require('nativescript-load-themes');
 themes.applyThemeCss('page {background-color: black;}', 'default-theme.css');
 ```
 
