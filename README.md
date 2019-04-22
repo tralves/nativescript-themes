@@ -1,3 +1,7 @@
+# DEPRECATED!
+
+Use `nativescript-themes` instead!
+
 # NativeScript-Load-Themes
 
 A NativeScript plugin to deal with dynamically loading UI Themes
