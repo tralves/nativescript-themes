@@ -1,11 +1,11 @@
 /**********************************************************************************
- * (c) 2016-2018, Master Technology
+ * (c) 2016-2019, Master Technology
  * Licensed under the MIT license or contact me for a Support or Commercial License
  *
  * I do contract work in most languages, so let me solve your problems!
  *
  * Any questions please feel free to email me or put a issue up on the github repo
- * Version 3.0.0                                      Nathan@master-technology.com
+ * Version 3.0.1                                      Nathan@master-technology.com
  *********************************************************************************/
 // @ts-check
 
@@ -123,14 +123,14 @@ function internalLoadCss(textCss, cssFileName) {
 	}
 
 	if (changed) {
-		const frame = frameCommon.topmost();
-		if (frame) {
-			if (frame._styleScope) {
-				frame._styleScope._localCssSelectorVersion++;
-				frame._styleScope.ensureSelectors();
-				frame._onCssStateChange();
+		const rootView = application.getRootView();
+		if (rootView) {
+			if (rootView._styleScope) {
+				rootView._styleScope._localCssSelectorVersion++;
+				rootView._styleScope.ensureSelectors();
+				rootView._onCssStateChange();
 			}
-			const backStack = frame.backStack;
+			const backStack = rootView.backStack;
 			if (backStack) {
 				for (let i = 0; i < backStack.length; i++) {
 					const page = backStack[i].resolvedPage;
@@ -142,7 +142,8 @@ function internalLoadCss(textCss, cssFileName) {
 				}
 			}
 
-			const page = frame.currentPage;
+			const frame = frameCommon.topmost();
+			const page = frame && frame.currentPage;
 			if (page) {
 				page._onCssStateChange();
 			}
