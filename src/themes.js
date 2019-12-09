@@ -15,8 +15,9 @@
 /* global UIDevice, UIDeviceOrientation, getElementsByTagName, android */
 
 const fs = require('tns-core-modules/file-system');
-const fsa = require('tns-core-modules/file-system/file-system-access').FileSystemAccess;
-const frameCommon = require('tns-core-modules/ui/frame/frame-common');
+const fsa = require('tns-core-modules/file-system/file-system-access')
+	.FileSystemAccess;
+const { Frame, topmost } = require('tns-core-modules/ui/frame');
 const appSettings = require('tns-core-modules/application-settings');
 const application = require('tns-core-modules/application');
 const StyleScope = require('tns-core-modules/ui/styling/style-scope');
@@ -104,7 +105,7 @@ function internalLoadCssFile(cssFile, path) {
 }
 
 function internalLoadCss(textCss, cssFileName) {
-	if (!frameCommon.topmost()) {
+	if (!topmost()) {
 		setTimeout(function() {
 			internalLoadCss(textCss, cssFileName);
 		}, 50);
@@ -130,8 +131,9 @@ function internalLoadCss(textCss, cssFileName) {
 				rootView._styleScope.ensureSelectors();
 				rootView._onCssStateChange();
 			}
-			const backStack = rootView.backStack;
-			if (backStack) {
+
+			if (rootView instanceof Frame) {
+				const backStack = rootView.backStack;
 				for (let i = 0; i < backStack.length; i++) {
 					const page = backStack[i].resolvedPage;
 					if (page) {
@@ -142,7 +144,7 @@ function internalLoadCss(textCss, cssFileName) {
 				}
 			}
 
-			const frame = frameCommon.topmost();
+			const frame = topmost();
 			const page = frame && frame.currentPage;
 			if (page) {
 				page._onCssStateChange();
