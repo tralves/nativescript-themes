@@ -5,8 +5,8 @@
 	"main": "themes.js",
 	"nativescript": {
 		"platforms": {
-			"android": "5.0.0",
-			"ios": "5.0.0"
+			"android": "6.0.0",
+			"ios": "6.0.0"
 		},
 		"plugin": {
 			"pan": "true",
@@ -17,7 +17,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://git.proplugins.org/proplugins/nativescript-themes.git"
+		"url": "https://github.com/tralves/nativescript-themes/"
 	},
 	"keywords": [
 		"NativeScript",
@@ -46,16 +46,13 @@
 	],
 	"license": {
 		"type": "MIT",
-		"url": "https://git.proplugins.org/proplugins/nativescript-themes/blob/master/LICENSE"
+		"url": "https://github.com/tralves/nativescript-themes/blob/master/LICENSE"
 	},
 	"bugs": {
-		"url": "https://git.proplugins.org/proplugins/nativescript-themes/issues"
+		"url": "https://github.com/tralves/nativescript-themes/issues"
 	},
-	"homepage": "https://git.proplugins.org/proplugins/nativescript-themes",
+	"homepage": "https://github.com/tralves/nativescript-themes",
 	"readmeFilename": "README.md",
-	"scripts": {
-		"postinstall": "node postinstall.js || echo \"ignore\""
-	},
 	"devDependencies": {
 		"prettier": "~1.16.4",
 		"tns-core-modules": "~5.3.1",
